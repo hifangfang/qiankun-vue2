@@ -74,7 +74,4 @@ typings/
 
 # DynamoDB Local files
 .dynamodb/
-
-common
-
 package-lock.json
