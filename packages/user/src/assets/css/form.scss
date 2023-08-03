@@ -1,0 +1,26 @@
+
+/*按钮相对于base-right-conent-page  定位*/
+.dataform-bottom {
+  margin-bottom: 0px!important;
+  .el-form-item__content{
+
+    margin-left: 0px!important;
+    text-align: center;
+  }
+}
+.base-right-page .base-right-conent-page .el-main .dataform-bottom{
+  width: calc(100% - 30px);
+  position: absolute;
+  left: 0;
+  bottom: 30px;
+  text-align: center;
+}
+/*在el-form内部底部的按钮 居中样式*/
+.formbutton-bottom-center {
+  margin-bottom: 0px!important;
+  .el-form-item__content{
+
+    margin-left: 0px!important;
+    text-align: center;
+  }
+}

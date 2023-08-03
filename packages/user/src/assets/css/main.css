@@ -1,0 +1,26 @@
+/*定义scss全局变量*/
+:root {
+  --background-color:#FFFFFF;   /*左侧背景颜色*/
+  --title-textcolor:#303133;    /*左侧文字颜色*/
+  --primary-color:#467CF3;      /*左侧选中后的文字颜色*/
+  --active-background-color:#ECF3FF;      /*左侧选中后的文字颜色*/
+  --primary-font-size:14px;
+  --primary-font-size-bigger:16px;
+  --leftNav-width:18%;
+  --leftNav-bottom-color:rgba(73,78,95,1);
+  --content-textcolor:#1989FA;
+  --content-becareful-color:#F46C6C;
+  --applybackground-color:rgba(255,255,255,1);
+  --apply-iconcolor:#557CEC;
+  --apply-textcolor:rgba(48,49,51,1);
+  --tabs-color:#457BF2;     /*应用编辑右侧tab标签颜色*/
+  --leftNav-hover-color:#ECF3FF;  /*应用编辑左侧菜单兰鼠标hover颜色*/
+  --resize-color:#F2F6FC;  /*可拖拽导航栏颜色*/
+  --resize-color-start:#858586;     /*split可拖拽按钮渐变颜色*/
+  --resize-color-stop:#F2F6FC;      /*split可拖拽按钮渐变颜色*/
+  --topMenu-bottom-color:rgba(70,76,92,1);  /*头部导航栏下划线*/
+  --topMenu-background-color:#070D2A;  /*头部背景颜色*/
+  --topMenu-title-textcolor:#ffffff;   /*头部文字颜色*/
+  --topMenu-primary-color:#69B7FF;     /*头部选中后的文字颜色*/
+  --topMenu-active-background-color:#5288F5;     /*头部选中后的文字颜色*/
+}
