@@ -1,11 +1,3 @@
-/*
- * @Author: lizhijie429
- * @Date: 2021-08-16 17:09:09
- * @LastEditors: lizhijie429
- * @LastEditTime: 2021-11-03 21:03:48
- * @Description:
- */
-
 import store from "../store/index";
 import router from "../router/index";
 import { initGlobalState } from "qiankun";

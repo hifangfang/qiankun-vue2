@@ -13,7 +13,7 @@
   </div>
 </template>
 <script>
-import { WaterMarkService } from "@/utils/js/water-mark.service.ts";
+import { WaterMarkService } from "@/utils/js/water-mark.service.js";
 import { BaseApi } from "@/api/base/module/base-api.ts";
 import loginForm from "@/components/loginForm.vue";
 export default {
@@ -72,13 +72,10 @@ export default {
         const logoData = data.filter((item) => item.key === "platformDesignerLogo");
         if (logoData.length > 0 && logoData[0].value !== "image") {
           this.logoUrl = logoData[0].value;
-        } else {
-          this.logoUrl = this.logoUrl;
         }
-        this.logoUrl =
-          logoData.length > 0 && logoData[0].value !== "image"
+        this.logoUrl = logoData.length > 0 && logoData[0].value !== "image"
             ? logoData[0].value
-            : require("../assets/images/loginPage/ztgx_logo.svg");
+            : require("../assets/login/ztgx_logo.svg");
         //替换浏览器图标
         this.changeFavicon(this.logoUrl); //刷新登录界面浏览器icon
       }

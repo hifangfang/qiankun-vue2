@@ -1,10 +1,4 @@
-/*
- * @Author: lizhijie429
- * @Date: 2021-08-16 17:11:52
- * @LastEditors: lizhijie429
- * @LastEditTime: 2021-10-18 17:14:01
- * @Description:
- */
+
 import { registerMicroApps, start } from "qiankun";
 
 import { filterApps, microConfig } from "./app-register";

@@ -2,13 +2,11 @@ import axios from "axios";
 import store from "../store";
 //认证集成start
 // @ts-ignore
-import { ApiRequestError, ApiResultCode } from "./api-response.ts";
+import { ApiRequestError, ApiResultCode } from "./api_response.ts";
 import { Loading, Message } from "element-ui";
-import { getUrlParam, getQueryString, isAppViewOrLogin } from "@/utils/js/url_path_utils.ts";
-import { LocalStorageUtil } from "@/utils/js/localstorage_utils.ts";
+import { getUrlParam, getQueryString, isAppViewOrLogin } from "@/utils/js/urlpath-utils.js";
+import { LocalStorageUtil } from "@/utils/js/localforage-utils.js";
 import MICRO_CONFIG from "./platform-config";
-import JSEncrypt from "jsencrypt";
-import common from "@/utils/js/common";
 import bus from "@/utils/js/bus";
 //认证集成end
 axios.defaults.withCredentials = true;
