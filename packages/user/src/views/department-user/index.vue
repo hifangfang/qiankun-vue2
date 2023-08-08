@@ -11,8 +11,6 @@
     <!--<keep-alive>-->
     <div class="departmentUser-index-page base-right-page"  :class="subGuid?'apply-right-page':''">
       <div class="base-right-conent-page">
-        <div class="red"> 测试子应用user--{{subappMsg}}</div>
-        <div @click="goToWorkcenter"> 跳转办件中心</div>
         <component v-if="componentName" :is="componentName" :treeNode="treeNode" @flushTree="flushTree" ref="componentName"></component>
         <EmptyData v-else></EmptyData>
       </div>
@@ -50,20 +48,17 @@
     loading=false;
     created(){
       console.log(this.$store.state,"mamamamamam")
-      const id=this.$store.state.subGuid
-      this.subGuid=id
+      // const id=this.$store.state.subGuid
+      // this.subGuid=id
     }
-    activated(){
-      const id=this.$store.state.subGuid
-      this.subGuid=id
-    }
-    updated(){
-      const id=this.$store.state.subGuid
-      this.subGuid=id
-    }
-    get subappMsg(){
-      return   this.$store.getters.msg
-    }
+    // activated(){
+    //   const id=this.$store.state.subGuid
+    //   this.subGuid=id
+    // }
+    // updated(){
+    //   const id=this.$store.state.subGuid
+    //   this.subGuid=id
+    // }
     async changeCompont(moduleName, data) {
       this.componentName = moduleName;
       this.treeNode = data;

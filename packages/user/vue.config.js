@@ -1,29 +1,49 @@
 const path = require("path");
-const packageName = require("./package.json").name;
-const node_env = process.env.NODE_ENV === "production";
-// const baseUrl = process.env.VUE_APP_BASE_URL;
-const baseUrl = "./";
-const resolve = (dir) => path.join(__dirname, dir);
+const { name, port } = require("./package");
+console.log(`${name}-[name]`);
+debugger
+function resolve(dir) {
+  return path.join(__dirname, dir);
+}
+const dev = process.env.NODE_ENV === "development";
 module.exports = {
-  outputDir: `../dist/${packageName}`,
-  publicPath: node_env ? baseUrl : "./",
+  publicPath: dev ? `//localhost:${port}` : "/",
+  outputDir: "dist",
   assetsDir: "static",
-  parallel: false,
+  filenameHashing: true,
+  devServer: {
+    hot: true,
+    disableHostCheck: true,
+    historyApiFallback:true,
+    port,
+    overlay: {
+      warnings: false,
+      errors: true
+    },
+    headers: {
+      "Access-Control-Allow-Origin": "*"
+    },
+    proxy: 'http://192.168.11.73:19013',
+  },
+  // 自定义webpack配置
   configureWebpack: {
     resolve: {
       alias: {
-        "@": resolve("src"),
-      },
+        "@": resolve("src")
+      }
     },
     output: {
-      library: `${packageName}-[name]`,
-      libraryTarget: "umd", // 把微应用打包成 umd 库格式
-      jsonpFunction: `webpackJsonp_${packageName}`,
-    },
+      // 把子应用打包成 umd 库格式
+      library:"user",
+      libraryTarget: "umd",
+      jsonpFunction: `webpackJsonp_${name}`
+    }
   },
-  chainWebpack: config => {
-    config.module.rule('js').use('babel-loader')
-    config.module.rule('ts').use('ts-loader')
-    config.entry('main').add('babel-polyfill')
-  }
+  // css: {
+  //   loaderOptions: {
+  //     sass: {
+  //       prependData: `@import "./src/assets/css/variables/variables.scss";`
+  //     }
+  //   }
+  // }
 };

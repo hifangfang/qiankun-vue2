@@ -1,11 +1,3 @@
-<!--
- * @Description:
- * @Author: lizhijie
- * @Date: 2021-03-24 08:40:19
- * @LastEditTime: 2021-12-25 10:02:14
- * @LastEditors: lizhijie
- * @Reference:
--->
 <template>
   <div id="app">
     <keep-alive>
@@ -23,4 +15,25 @@ export default {
     }
   },
 };
+
 </script>
+<style lang="scss">
+@import "./assets/css/reset.scss";
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: "SourceHanSansSC-Normal";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  /*overflow: hidden;*/
+  /*box-sizing: border-box;*/
+}
+#app {
+  width: 100vw;
+  height: 100vh;
+  box-sizing: border-box;
+}
+</style>

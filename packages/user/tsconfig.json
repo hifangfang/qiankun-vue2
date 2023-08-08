@@ -16,7 +16,6 @@
       "webpack-env"
     ],
     "paths": {
-      "tslib" : ["path/to/node_modules/tslib/tslib.d.ts"],
       "@/*": [
         "src/*"
       ]
@@ -33,7 +32,7 @@
     "src/**/*.tsx",
     "src/**/*.vue",
     "tests/**/*.ts",
-    "tests/**/*.tsx", "src/utils/js/aes_utils.js"
+    "tests/**/*.tsx"
   ],
   "exclude": [
     "node_modules"

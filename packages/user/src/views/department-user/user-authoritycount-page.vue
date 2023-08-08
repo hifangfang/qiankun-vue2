@@ -6,17 +6,17 @@
 
 <script lang="ts">
   import {Component, Vue, Prop} from 'vue-property-decorator';
-  import { loadMicroApp } from 'qiankun';
+  // import { loadMicroApp } from 'qiankun';
   @Component({
     name: "user-authoritycount-page"
   })
   export default class UserAuthorityCountPage extends Vue {
     mounted(){
-       loadMicroApp({
-         name: 'subapp-workcenter',
-         entry: '//localhost:2750/workcenter/createWork',
-         container: '#appWorkcenter2',
-       });
+       // loadMicroApp({
+       //   name: 'subapp-workcenter',
+       //   entry: '//localhost:2750/workcenter/createWork',
+       //   container: '#appWorkcenter2',
+       // });
 
     }
   }

@@ -4,10 +4,7 @@ import { ApiRequestError } from './api-response';
 import {Loading, Message} from 'element-ui'
 import {ApiResultCode} from './api-response'
 import {getUrlParam} from '@/utils/js/url_path_utils';
-import { AuthApi } from '@/api/auth/auth-api';
 import MICRO_CONFIG from './platform_config';
-import JSEncrypt from 'jsencrypt';
-import common from "@/utils/js/common";
 //认证集成end
 axios.defaults.withCredentials = true;
 var loadingInstance
@@ -17,15 +14,6 @@ axios.interceptors.request.use(config => {
     addLoading(config)
     let t = getUrlParam('token');
     let timestampTokenRes;
-    if(MICRO_CONFIG.timestampToken){
-      let date = Date.now();
-      const securityValue = "GisqSecurity_" + common.newGuid() + "_" + date;
-      let pubKey = window.localStorage.getItem("gisqPublic") as string;
-      let options = {};
-      let encryptStr = new JSEncrypt(options);
-      encryptStr.setPublicKey(pubKey);
-      timestampTokenRes = encryptStr.encrypt(securityValue);
-    }
     if(t !== '' && t !== null){
       //判断是否有bearer
       let haveToken = t.toLowerCase();
@@ -40,12 +28,10 @@ axios.interceptors.request.use(config => {
       let loginname = JSON.parse(a).user_name;
       window.localStorage.setItem('username',loginname);
     }
-    const token = window.localStorage.getItem('X-Gisq-Token');
-    if(MICRO_CONFIG.timestampToken){
-      config.headers['X-Gisq-Token'] = token + "." + timestampTokenRes;
-    }else{
-      config.headers['X-Gisq-Token'] = token;
-    }
+    const token = localStorage.getItem('X-Gisq-Token');
+    console.log(token,"hahahahxixixixi")
+    config.headers['X-Gisq-Token'] = token;
+
     //开发环境的时候注释掉config.headers['X-Gisq-Token'] ，放开  config.url +=
     //config.url += '?access_token=' + token?.substr('bearer '.length);
     return config;

@@ -112,9 +112,11 @@ export default class DepartmentUserPageLeft extends Vue {
   systemUser = LocalStorageUtil.getItem('systemUser') as any;
 
   async created() {
+    debugger
     //获取当前登录用户的父机构及跟他平级或子级的部门
     this.loginUserSameOrNextLevelDept = []
-    const userId = LocalStorageUtil.getItem("userId") || getUrlParam("userId")
+    console.log(this.$store.state,"ssssss测试测试")
+    const userId = this.$store.state?.global.userInfo?.user_id || getUrlParam("userId")
     const response = await IdentityApi.getByIdUserDepartments(userId);
     this.loginUserDetail = response
     for (let i = 0; i < this.loginUserDetail.departments.length; i++) {
@@ -222,7 +224,7 @@ export default class DepartmentUserPageLeft extends Vue {
   }
 
   async getTreeUsers() {
-    const userName = LocalStorageUtil.getItem('username') as string;
+    const userName = this.$store.state?.global.userInfo?.user_name as string;
     const id = 'null';
     const fg = 'true';
     let response: any = await IdentityApi.syncDepartmentsUserTree(id, userName, fg);
@@ -238,7 +240,7 @@ export default class DepartmentUserPageLeft extends Vue {
   }
 
   async initTree(id, fg) {
-    const userName = LocalStorageUtil.getItem('username') as string;
+    const userName = this.$store.state?.global.userInfo?.user_name as string;
     const response: any = await IdentityApi.syncDepartmentsUserTree(id, userName, fg);
     let tree:any=response.map(item=>{return{...item,icon:this.getNodeIcon(item.type,item.disabled),leaf:item.treeStatus}})
     return tree;

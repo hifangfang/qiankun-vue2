@@ -1,27 +1,23 @@
-import "./public-path";
+import "./qiankun/public-path";
+import { lifeCycle, render } from "./qiankun/life-cycle";
+debugger
+/**
+ * @name 统一注册插件
+ */
 import Vue from "vue";
-import App from "./App.vue";
-import router from "./router";
-import store from "./store";
-import common from "qiankun-vue2-common";
-
-import ElementUI from "element-ui";
+import ElementUI from 'element-ui';
 import "element-ui/lib/theme-chalk/index.css";
+Vue.use(ElementUI);
+
 import validator from "validator";
 Vue.prototype.$validator = validator;
-
-Vue.mixin({
-  methods: {
-    jumpPage(path, moduleName) {
-      // 通知主应用发生了页面跳转
-      // @ts-ignore
-      this.$setGlobalState({
-        currentRoute: { currentPage: path, currentModuleName: moduleName },
-      });
-    },
-  },
-});
-
+import "./api/axios"
+/**
+ * @name 注册样式
+ */
+import './assets/css/form.scss';
+import './assets/css/main.css';
+import './assets/css/element-variables.scss';
 // 解决element-ui下拉框报错问题
 let rawGetComputedStyle = window.getComputedStyle;
 // @ts-ignore
@@ -30,40 +26,16 @@ window.getComputedStyle = function (el, pseudoElt) {
   return rawGetComputedStyle(el, pseudoElt);
 };
 
-Vue.config.productionTip = false;
-let instance = null;
-function render(props = {}) {
-  // @ts-ignore
-  const { container } = props;
-  Vue.use(ElementUI, { size: "small" });
-  // @ts-ignore
-  Vue.prototype.$setGlobalState = props.setGlobalState;
-  // @ts-ignore
-  instance = new Vue({
-    router,
-    store,
-    render: (h) => h(App),
-  }).$mount(container ? container.querySelector("#app") : "#app");
-}
 
+/**s
+ * @name 导出微应用生命周期
+ */
+const { bootstrap, mount, unmount } = lifeCycle();
+export { bootstrap, mount, unmount };
 // 独立运行时
-// @ts-ignore
-if (!window.__POWERED_BY_QIANKUN__) {
-  render();
-}
 
-export async function bootstrap(props) {
-  console.log("[vue] vue app bootstraped", props);
-}
-export async function mount(props) {
-  console.log("[vue] props from main framework", props);
-  common.initGlobalState(store, props);
-  render(props);
-}
-export async function unmount() {
-  // @ts-ignore
-  instance.$destroy();
-  // @ts-ignore
-  instance.$el.innerHTML = "";
-  instance = null;
-}
+/**
+ * @name 单独环境直接实例化vue
+ */
+const __qiankun__ :any= (window as any).__POWERED_BY_QIANKUN__;
+__qiankun__ || render();

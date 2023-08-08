@@ -3,7 +3,18 @@ import VueRouter from "vue-router";
 import store from "../store";
 
 Vue.use(VueRouter);
-
+//微应用页面路由
+let appBaseRoutes = [
+  {
+    path: "/",
+    redirect: "/department-user",
+  },
+  {
+    path: "/department-user",
+    component: (resolve) => require(["../views/department-user/index.vue"], resolve),
+    meta: { title: "首页" },
+  },
+];
 const routes = [];
 
 // 处理重复点击同一个路由报错的问题
@@ -23,16 +34,26 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
   let rotesData = store?.state?.routes?.routesData;
-  console.log(store?.state,router,"hahahh")
   if (!router.options.isAddAsyncMenuData) {
-    if (rotesData.length > 0) {
+    if (rotesData?.length > 0) {
+      //作为qiankun微应用运行 主应用下发了基础路由
       rotesData.forEach((element) => {
+        console.log(element, appBaseRoutes, "比較");
+        let component = appBaseRoutes.filter((item) => item.path === element.path)[0]?.component;
+        element.component = component;
+        router.addRoute(element);
+        console.log(router, "測試路由");
+      });
+    } else {
+      //独立运行时 注册路由
+      appBaseRoutes.forEach((element) => {
         router.addRoute(element);
       });
     }
     router.options.isAddAsyncMenuData = true;
     next({ ...to, replace: true }); // hack方法 确保addRoutes已完成
   } else {
+    router.options.isAddAsyncMenuData = true;
     next();
   }
 });

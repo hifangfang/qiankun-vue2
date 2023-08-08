@@ -1,6 +1,7 @@
 {
   "name": "user",
   "version": "0.1.0",
+  "port": "8030",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
@@ -22,20 +23,20 @@
     "core-js": "^3.6.5",
     "crypto-js": "^3.1.9-1",
     "element-resize-detector": "^1.2.1",
-    "element-ui": "^2.15.1",
+    "element-ui": "^2.13.0",
     "jquery": "^3.3.1",
     "js-base64": "^3.6.1",
     "jsencrypt": "^3.2.0",
     "lodash": "^4.17.21",
     "min-dash": "^3.5.2",
     "moment": "^2.22.2",
-    "validator": "^13.5.2",
-    "qiankun": "2.2.1",
-    "qiankun-vue2-common": "^1.4.1",
+    "node-sass": "^4.14.1",
     "register-service-worker": "^1.6.2",
-    "vue": "^2.6.11",
-    "vue-class-component": "^7.0.0",
-    "vue-property-decorator": "^9.0.0",
+    "uuid": "^3.3.3",
+    "validator": "^13.5.2",
+    "vue": "^2.6.10",
+    "vue-class-component": "^7.0.2",
+    "vue-property-decorator": "^8.3.0",
     "vue-router": "^3.2.0",
     "vuex": "^3.4.0"
   },
@@ -48,11 +49,10 @@
     "@vue/eslint-config-typescript": "^6.0.0",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.2.2",
-    "node-sass": "^4.12.0",
     "sass-loader": "^8.0.2",
     "transliteration": "^2.2.0",
-    "typescript": "^3.8.0-beta",
-    "vue-template-compiler": "^2.6.11",
-    "tslib": "1.10.0"
+    "tslib": "1.10.0",
+    "typescript": "^3.7.4",
+    "vue-template-compiler": "^2.6.10"
   }
 }
