@@ -31,7 +31,7 @@ export class WaterMarkService {
   static create(text, forceRefresh = false) {
     //shentx 水印显示时间改动：不再获取登陆时间 显示最新时间
     let currentTime = getCurrTime();
-    let reg = /[\d]{4}[\/-]{1}[\d]{1,2}[\/-]{1}[\d]{1,2}\s[\d]{1,2}[:][\d]{1,2}[:][\d]{1,2}/g;
+    let reg = /^[1-9]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])\s+(20|21|22|23|[0-1]\d):[0-5]\d:[0-5]\d$/;
     text = JSON.parse(JSON.stringify(text).replace(reg, currentTime));
     if (this.shouldRemove) {
       this.shouldRemove = false;

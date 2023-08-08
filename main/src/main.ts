@@ -12,6 +12,7 @@ Vue.use(ElementUI, { size: "small" });
 import validator from "validator";
 Vue.prototype.$validator = validator;
 import http from "./utils/axios";
+import "./api/axios"
 Vue.prototype.$http = http;
 
 import { parse, stringify } from "qs";

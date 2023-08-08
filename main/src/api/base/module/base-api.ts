@@ -8,6 +8,7 @@ export class BaseApi {
 
   static async getPlatInfo(): Promise<PlatformInfo> {
     const response = await axios.get<Api_response<PlatformInfo>>(this.getPlatInfoUrl);
+    console.log(response)
     return response.data.data;
   }
   //根据变量Key获取变量值

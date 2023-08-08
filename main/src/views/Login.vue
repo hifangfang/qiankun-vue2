@@ -73,7 +73,8 @@ export default {
         if (logoData.length > 0 && logoData[0].value !== "image") {
           this.logoUrl = logoData[0].value;
         }
-        this.logoUrl = logoData.length > 0 && logoData[0].value !== "image"
+        this.logoUrl =
+          logoData.length > 0 && logoData[0].value !== "image"
             ? logoData[0].value
             : require("../assets/login/ztgx_logo.svg");
         //替换浏览器图标

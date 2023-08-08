@@ -22,9 +22,9 @@
     "qiankun-vue2-common": "^1.4.1",
     "screenfull": "^5.1.0",
     "validator": "^13.5.2",
-    "vue-class-component": "^7.0.0",
-    "vue-property-decorator": "^9.0.0",
-    "vue": "^2.6.11",
+    "vue-class-component": "^7.0.2",
+    "vue-property-decorator": "^8.3.0",
+    "vue": "^2.6.10",
     "vue-router": "^3.2.0",
     "vuex": "^3.4.0"
   },
@@ -47,8 +47,8 @@
     "prettier": "^2.2.1",
     "sass-loader": "^8.0.2",
     "tailwindcss": "^2.0.4",
-    "typescript": "^3.8.0-beta",
-    "vue-template-compiler": "^2.6.11"
+    "typescript": "^3.7.4",
+    "vue-template-compiler": "^2.6.10"
   },
   "gitHooks": {
     "pre-commit": "lint-staged"

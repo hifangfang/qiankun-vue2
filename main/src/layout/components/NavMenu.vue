@@ -61,7 +61,7 @@ export default {
   computed: {
     ...mapState({
       currentModuleName: (state) => state.permission.currentModuleName,
-      userName: (state) => state.user.userInfo.name,
+      userName: (state) => state.user.userInfo.user_name,
       menuList: (state) => state.permission.menuList,
       tabsList: (state) => state.tabs.tabsList,
     }),

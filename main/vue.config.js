@@ -16,14 +16,12 @@ module.exports = {
     proxy: {
       "/mock/api": {
         target: process.env.VUE_APP_API_URL,
-        changeOrigin: true,
         pathRewrite: {
           "^/mock/api": "", // rewrite path
         },
       },
-      "/base": {
+      "/": {
         target: "http://192.168.11.73:19013",
-        changeOrigin: true,
       },
     },
   },

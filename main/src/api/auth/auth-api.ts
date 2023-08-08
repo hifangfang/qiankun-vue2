@@ -1,9 +1,10 @@
 import aes_utils from "@/utils/js/aes-utils";
-import axios from "axios";
+import axios from "@/api/axios";
 import { MICRO_CONFIG } from "@/api/platform-config";
 import { UserLoginResponse } from "@/api/auth/user-login-response.model";
 import { Api_response } from "@/api/api_response";
 import { LocalStorageUtil } from "@/utils/js/localforage-utils.js";
+import { qiankunActions } from "../../qiankun/index";
 const ip = localStorage.ip != "undefined" ? localStorage.ip : "";
 
 export class AuthApi {
@@ -43,36 +44,36 @@ export class AuthApi {
         params: getLoginParamAfterEncrypt(username, password),
       });
     }
-    let token = userLoginRes.access_token,
-      exdate = new Date(); //获取时间
-    exdate.setTime(exdate.getTime() + 60 * 60 * 1000 * 6);
-    userLoginRes.systemUser = userLoginRes.system_user; //for bi使用
-    //登录成功跳转之前添加一个登录成功标记
-    const userNickname = decodeURIComponent(userLoginRes.user_nickname);
-    const user_name = decodeURIComponent(userLoginRes.user_name);
+    let token = userLoginRes?.data?.access_token;
+    //   exdate = new Date(); //获取时间
+    // exdate.setTime(exdate.getTime() + 60 * 60 * 1000 * 6);
+    // userLoginRes.systemUser = userLoginRes.system_user; //for bi使用
+    // //登录成功跳转之前添加一个登录成功标记
+    // const userNickname = decodeURIComponent(userLoginRes.user_nickname);
+    // const user_name = decodeURIComponent(userLoginRes.user_name);
+    // console.log(userLoginRes,"用户")
     //token锁屏重新登录 根据subGuid设置缓存值
     if (!subGuid) {
-      localStorage.setItem("userNickname", userNickname);
-      localStorage.setItem("username", user_name);
-      localStorage.setItem("beforeTelephoneTm", userLoginRes.user_tel);
-      localStorage.setItem("userId", userLoginRes.user_id);
-      localStorage.setItem("loginflag", "true");
+      // localStorage.setItem("userNickname", userNickname);
+      // localStorage.setItem("username", user_name);
+      // localStorage.setItem("beforeTelephoneTm", userLoginRes.user_tel);
+      // localStorage.setItem("userId", userLoginRes.user_id);
+      // localStorage.setItem("loginflag", "true");
+      // localStorage.setItem("tempToken", userLoginRes.tempToken);
+      // localStorage.setItem("gisqPublic", userLoginRes.gisqPublic);
+      // localStorage.setItem("accessToken", token);
+      // localStorage.setItem("initPasswordModifyFlag", userLoginRes.initPasswordModifyFlag); //首次登录或重置密码后需修改密码
+      // localStorage.setItem("initPasswordModifyCause", userLoginRes.initPasswordModifyCause); //强制修改密码提示说明
+      // localStorage.setItem("tokenFail", "false");
       localStorage.setItem("X-Gisq-Token", "Bearer " + token);
-      localStorage.setItem("tempToken", userLoginRes.tempToken);
-      localStorage.setItem("gisqPublic", userLoginRes.gisqPublic);
-      localStorage.setItem("accessToken", token);
-      localStorage.setItem("initPasswordModifyFlag", userLoginRes.initPasswordModifyFlag); //首次登录或重置密码后需修改密码
-      localStorage.setItem("initPasswordModifyCause", userLoginRes.initPasswordModifyCause); //强制修改密码提示说明
-      localStorage.setItem("tokenFail", "false");
-      localStorage.setItem("userinfo", JSON.stringify(userLoginRes));
+      localStorage.setItem("userInfo", JSON.stringify(userLoginRes.data));
+      qiankunActions.setGlobalState({ userInfo: userLoginRes.data });
       localStorage.setItem("tokenLost", "false");
       sessionStorage.setItem("loginStatus", "true");
     } else {
-      LocalStorageUtil.setItem("X-Gisq-Token", "Bearer " + token);
-      LocalStorageUtil.setItem("accessToken", token);
+      // LocalStorageUtil.setItem("X-Gisq-Token", "Bearer " + token);
+      // LocalStorageUtil.setItem("accessToken", token);
     }
-    document.cookie = "X-Gisq-Token" + "=Bearer " + token + ";path=/;expires=" + exdate.toUTCString();
-
     return userLoginRes;
   }
 

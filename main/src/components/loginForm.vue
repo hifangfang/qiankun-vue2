@@ -516,11 +516,9 @@ export default {
         } else {
           localStorage.setItem("pflag", true + "♀" + data.key + "♀" + data.rev);
         }
-        debugger;
-        window?.location?.reload();
-        debugger;
-        //登录成功连接websocket
-        this.initSoket();
+        this.$store.commit("permission/UPDATE_CURRENT_MODULE_NAME", "main");
+        this.$store.commit("permission/UPDATE_CURRENT_PAGE", "/home");
+        this.$router.push("/home");
         //添加水印
         await this.addWaterMarkService();
       }
