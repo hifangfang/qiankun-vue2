@@ -5,6 +5,7 @@ import { lifeCycle, render } from "./qiankun/life-cycle";
  */
 import Vue from "vue";
 import ElementUI from "element-ui";
+console.log(Vue,ElementUI)
 Vue.use(ElementUI, { size: "small" });
 import "element-ui/lib/theme-chalk/index.css";
 import validator from "validator";

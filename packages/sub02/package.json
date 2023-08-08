@@ -11,12 +11,12 @@
   "dependencies": {
     "axios": "^0.21.1",
     "core-js": "^3.6.5",
-    "element-ui": "^2.15.1",
+    "element-ui": "^2.13.0",
     "normalize-css": "^2.3.1",
     "qiankun": "^2.5.1",
     "qiankun-vue2-common": "^1.4.1",
     "validator": "^13.5.2",
-    "vue": "^2.6.11",
+    "vue": "^2.6.10",
     "vue-json-views": "^1.3.0",
     "vue-router": "^3.2.0",
     "vuex": "^3.4.0"
