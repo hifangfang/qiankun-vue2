@@ -42,7 +42,6 @@ router.beforeEach((to, from, next) => {
         let component = appBaseRoutes.filter((item) => item.path === element.path)[0]?.component;
         element.component = component;
         router.addRoute(element);
-        console.log(router, "測試路由");
       });
     } else {
       //独立运行时 注册路由

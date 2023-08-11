@@ -25,7 +25,6 @@ const lifeCycle = () => {
       // 注册主应用下发的组件 工具类
       libraryInstall(Vue, store, props);
       console.log("[vue] props from main framework", props);
-      // common.initGlobalState(store, props);
       render(props);
     },
     async unmount() {

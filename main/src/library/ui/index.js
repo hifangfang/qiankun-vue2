@@ -13,7 +13,6 @@ const components = [FtContainer, FtContextmenu, FtTable, FtScroll, FtFadein, FtT
 
 const install = function (Vue) {
   components.forEach(component => {
-    console.log(component)
     Vue.component(component.name, component);
   });
 };

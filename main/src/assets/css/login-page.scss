@@ -1,0 +1,35 @@
+@import './login-form.scss';
+.main-login-page {
+  display: flex;
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  .bg-video {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    object-fit: fill;
+  }
+  .logo-and-title {
+    position: absolute;
+    top: 0;
+    left: 0;
+    li {
+      img {
+        width: 40px;
+        height: 40px;
+        margin-right: 10px;
+      }
+      display: flex;
+      align-items: center;
+      margin-top: 25px;
+      margin-left: 130px;
+      font-size: 28px;
+      font-family: "SourceHanSansSC-Normal";
+      font-weight: 400;
+      color: #ffffff;
+    }
+  }
+}

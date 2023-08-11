@@ -33,12 +33,7 @@ export default {
     }),
   },
   mounted() {
-    // 初始化全局下发的数据
-    this.$actions.setGlobalState({
-      userInfo: this.$store.state.user.userInfo,
-      globalConfig: this.$store.state.user.globalConfig,
-      routers: this.$store.state.permission.routers,
-    });
+
     // 获取页面持久化数据
     const currentPage = sessionStorage.getItem("currentPage");
     const currentApp = sessionStorage.getItem("currentApp");

@@ -17,7 +17,6 @@ export class WebSoketAPI {  //通过websoket来监控登录的信息（登录人
           try {
             var obj = eval("(" + data + ")")
             if(obj?.tokenLost){
-              console.log(window,window.top,window.top&&window.top!=window.self)
               let href = window.location.href;
               if (window.top&&window.top!=window.self&&href.indexOf('/bi/') < 0)return
               if(href.indexOf('/bi/') < 0&&href.indexOf('/login')<0&&href.indexOf('/iframe/loginform')<0){

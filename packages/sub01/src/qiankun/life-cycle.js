@@ -2,7 +2,6 @@ import Vue from "vue";
 import router from "../router";
 import store from "../store";
 import App from "../App";
-
 Vue.mixin({
   methods: {
     jumpPage(path, moduleName) {
@@ -20,18 +19,16 @@ const lifeCycle = () => {
     },
     async mount(props) {
       const { setGlobalState, libraryInstall } = props;
-      //注册乾坤setGlobalState 通信方法
+      //注册qiankun框架setGlobalState 通信方法
       Vue.prototype.$setGlobalState = setGlobalState;
       // 注册主应用下发的组件 工具类
       libraryInstall(Vue, store, props);
       console.log("[vue] props from main framework", props);
-      // common.initGlobalState(store, props);
       render(props);
     },
     async unmount() {
       instance.$destroy();
       instance.$el.innerHTML = "";
-      instance = null;
     },
   };
 };

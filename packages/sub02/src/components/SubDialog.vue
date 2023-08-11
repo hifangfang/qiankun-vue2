@@ -1,10 +1,3 @@
-<!--
- * @Author: lizhijie429
- * @Date: 2021-08-19 16:46:58
- * @LastEditors: lizhijie429
- * @LastEditTime: 2021-08-19 17:03:58
- * @Description: 
--->
 <template>
   <div v-if="visiable">
     <h1>{{ number }}</h1>

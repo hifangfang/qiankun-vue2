@@ -1,5 +1,4 @@
 import axios from "axios";
-import store from "../store";
 //认证集成start
 // @ts-ignore
 import { ApiRequestError, ApiResultCode } from "./api_response.ts";
@@ -19,14 +18,7 @@ axios.interceptors.request.use(
 
     if (config.url?.indexOf("Api") == -1) {
       config.headers["X-Gisq-Token"] = token;
-    }
-    //开发环境的时候注释掉config.headers['X-Gisq-Token'] ，放开  config.url +=
-    //config.url += '?access_token=' + token?.substr('bearer '.length);
-
-    config.cancelToken = new axios.CancelToken(function (cancel) {
-      store.commit("pushToken", { cancelToken: cancel });
-    });
-
+    };
     return config;
   },
   (error) => {
@@ -44,7 +36,6 @@ axios.interceptors.response.use(
       localStorage.setItem("access-user", res.data.user);
     }
     if (res) {
-      console.log(res, "hahahah");
       if (res.data instanceof Blob) {
         if (res.status != 200) {
           //如果有loading，隐藏loading

@@ -39,6 +39,7 @@ qiankunActions.onGlobalStateChange((state) => {
         continue;
       }
       if (key === "routers") {
+        debugger;
         store.commit("permission/UPDATE_ROUTERS", item);
         continue;
       }

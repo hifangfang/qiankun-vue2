@@ -11,7 +11,6 @@
  * @param {String} title 标题 暂时没有用
  */
 function routerGo(href = '/', title = null, stateObj = {}) {
-  console.log(href,title)
   window.history.pushState(stateObj, title, href); 
 }
 

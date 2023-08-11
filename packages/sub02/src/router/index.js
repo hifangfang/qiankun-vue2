@@ -40,11 +40,9 @@ router.beforeEach((to, from, next) => {
     if (rotesData?.length > 0) {
       //作为qiankun微应用运行 主应用下发了基础路由
       rotesData.forEach((element) => {
-        console.log(element, appBaseRoutes, "比較");
         let component = appBaseRoutes.filter((item) => item.path === element.path)[0]?.component;
         element.component = component;
         router.addRoute(element);
-        console.log(router, "測試路由");
       });
     } else {
       //独立运行时 注册路由

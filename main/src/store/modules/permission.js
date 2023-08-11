@@ -5,7 +5,8 @@ import http from "axios";
 import { constantRoutes } from "@/router";
 import Layout from "@/views/Layout";
 import { homeMenuData } from "../../utils";
-
+import { qiankunActions } from "../../qiankun/index";
+import store from "../../store/index";
 const permission = {
   namespaced: true,
   state: () => ({
@@ -18,6 +19,7 @@ const permission = {
   mutations: {
     // 当前模块
     UPDATE_CURRENT_MODULE_NAME(state, payload) {
+      debugger
       sessionStorage.setItem("currentApp", payload);
       state.currentModuleName = payload;
     },
@@ -43,6 +45,7 @@ const permission = {
     },
     // 路由数据
     UPDATE_ROUTERS(state, payload) {
+      debugger
       state.routers = constantRoutes.concat(payload);
     },
   },
@@ -59,13 +62,21 @@ const permission = {
             const route = getMenuItem(module.menuList);
             routes = [...routes, ...route];
           }
-          console.log(routes,"xixixii")
           routes.push({
             path: "*",
             name: "notfound",
             component: () => import("@/views/404.vue"),
           });
+          debugger
           commit("UPDATE_ROUTERS", routes);
+          // debugger
+          // // 初始化全局下发的数据
+          debugger
+          qiankunActions.setGlobalState({
+            userInfo: store.state.user.userInfo,
+            globalConfig: store.state.user.globalConfig,
+            routers: store.state.permission.routers,
+          });
           resolve(routes);
         });
       });

@@ -29,7 +29,6 @@ axios.interceptors.request.use(config => {
       window.localStorage.setItem('username',loginname);
     }
     const token = localStorage.getItem('X-Gisq-Token');
-    console.log(token,"hahahahxixixixi")
     config.headers['X-Gisq-Token'] = token;
 
     //开发环境的时候注释掉config.headers['X-Gisq-Token'] ，放开  config.url +=

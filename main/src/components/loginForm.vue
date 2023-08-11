@@ -1,5 +1,5 @@
 <template>
-  <div class="login-box">
+  <div class="main-login-box">
     <!--启用验证码登录      -->
     <el-tabs
       v-if="showCodeLogin && loginType !== 'authentication'"
@@ -518,7 +518,10 @@ export default {
         }
         this.$store.commit("permission/UPDATE_CURRENT_MODULE_NAME", "main");
         this.$store.commit("permission/UPDATE_CURRENT_PAGE", "/home");
-        this.$router.push("/home");
+
+        setTimeout(() => {
+          this.$router.push("/home");
+        }, 100);
         //添加水印
         await this.addWaterMarkService();
       }
@@ -621,173 +624,136 @@ export default {
 };
 </script>
 <style lang="scss">
-.loginFormDialog,
-.biLoginFormDialog {
-  //锁屏遮罩层添加毛玻璃效果
-  &::after {
-    content: "";
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-    z-index: 2000;
-  }
-  .el-dialog {
-    z-index: 2001;
-    width: 500px;
-    background: linear-gradient(95.12deg, #e2eafd 12.56%, #ffffff 77.69%);
-  }
-  .el-dialog__header {
-    border-bottom: none !important;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 25px;
-    color: #303133;
-    .el-icon-warning {
-      color: #ffc624;
-      margin-right: 15px;
-    }
-  }
-  .el-dialog__body {
-    padding: 15px;
-  }
-}
-.loginFormDialog,
-.biLoginFormDialog,
-.iframeLogin {
-  .login-box {
-    padding: 50px;
-    width: 470px;
-    height: 400px;
-    min-height: 280px;
-    box-sizing: border-box;
-    background: #ffffff;
-    border-radius: 4px;
-    z-index: 99;
-    .login-type-wrap {
-      .el-tabs__header {
-        .el-tabs__nav {
-          margin-left: 75px;
-        }
-        .el-tabs__item {
-          width: 100px;
-          height: 70px !important;
-          line-height: normal;
-          > span {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            color: #c0c4cc;
-            i {
-              display: block;
-              font-size: 32px;
-            }
-          }
-        }
-        .el-tabs__item.is-active {
-          > span {
-            color: #467cf3;
-          }
-        }
-      }
-    }
-    .login-password-wrap {
-      > span {
-        display: inline-block;
-        width: 100%;
-        font-size: 22px;
-        margin-bottom: 10px;
-        text-align: center;
-      }
-    }
-    .el-form {
-      .el-form-item {
-        /*height: 50px;*/
-        line-height: 50px;
-        margin-bottom: 18px;
-        &:nth-child(1),
-        &:nth-child(2) {
-          border: 1px solid #467cf3;
-          .el-form-item__content {
-            display: flex;
-            line-height: 50px !important;
-
-            i {
-              /*height: 50px;*/
-              line-height: 50px;
-              padding: 0 8px;
-              color: #c0c4cc;
-              font-size: 22px;
-            }
-            .el-input {
-              /*height: 50px;*/
-              line-height: 50px;
-              .el-input__inner {
-                /*height: 50px;*/
-                line-height: 50px;
-                border: none;
-              }
-            }
-            .el-input.is-disabled .el-input__inner {
-              color: #c0c4cc;
-              cursor: not-allowed;
-            }
-            .getCode {
-              padding: 8px;
-              color: #467cf3;
-            }
-          }
-        }
-      }
-    }
-
-    .rememberpassword {
-      .el-checkbox__label {
-        color: #557cec;
-      }
-      .el-checkbox__input.is-checked .el-checkbox__inner {
-        background-color: #557cec;
-        border-color: #557cec;
-      }
-      .el-checkbox__input.is-checked + .el-checkbox__label {
-        color: #557cec;
-      }
-      .registerbtn {
-        float: right;
-        font-size: 14px;
-        font-family: PingFang SC;
-        font-weight: 400;
-        color: #ffffff;
-        cursor: pointer;
-      }
-    }
-    .loginbtn {
-      margin-top: 10px;
-      .el-button {
-        width: 100%;
-        height: 47px !important;
-        line-height: 47px !important;
-        background: #467cf3;
-        border-radius: 4px;
-        color: white;
-        font-size: 18px;
-        padding: 0;
-      }
-    }
-    .footer-text {
-      display: inline-block;
-      width: 100%;
-      margin-top: 10px;
-      font-size: 14px;
-      text-align: center;
-    }
-  }
-}
+//.main-login-box {
+//  position: absolute;
+//  top: 46%;
+//  left: 62%;
+//  margin-top: -160px;
+//  padding: 30px 50px;
+//  width: 450px;
+//  min-height: 280px;
+//  box-sizing: border-box;
+//  border: 1px solid #467cf3;
+//  background: #0e2851;
+//  //opacity: 0.8;
+//  border-radius: 10px;
+//  z-index: 99;
+//  .login-type-wrap {
+//    .el-tabs__header {
+//      .el-tabs__nav {
+//        margin-left: 75px;
+//      }
+//      .el-tabs__item {
+//        width: 100px;
+//        height: 70px !important;
+//        line-height: normal;
+//        > span {
+//          width: 100%;
+//          height: 100%;
+//          display: flex;
+//          flex-wrap: wrap;
+//          justify-content: center;
+//          color: #c0c4cc;
+//          i {
+//            display: block;
+//            font-size: 32px;
+//          }
+//        }
+//      }
+//      .el-tabs__item.is-active {
+//        > span {
+//          color: #467cf3;
+//        }
+//      }
+//    }
+//  }
+//  .login-password-wrap {
+//    > span {
+//      display: inline-block;
+//      width: 100%;
+//      font-size: 22px;
+//      color: #fff0f0;
+//      margin-bottom: 10px;
+//      text-align: center;
+//    }
+//  }
+//  .el-form {
+//    .el-form-item {
+//      height: 50px;
+//      line-height: 50px;
+//      margin-bottom: 18px;
+//      &:nth-child(1),
+//      &:nth-child(2) {
+//        border: 1px solid #467cf3;
+//        .el-form-item__content {
+//          display: flex;
+//          line-height: 50px !important;
+//
+//          i {
+//            height: 50px;
+//            line-height: 50px;
+//            padding: 0 8px;
+//            color: white;
+//            font-size: 22px;
+//          }
+//          .el-input {
+//            height: 50px;
+//            line-height: 50px;
+//            .el-input__inner {
+//              height: 50px;
+//              line-height: 50px;
+//              border: none;
+//              background-color: transparent;
+//              color: #ffffff;
+//            }
+//          }
+//          .input_set .el-input__inner:-webkit-autofill {
+//            //input 背景色
+//            -webkit-box-shadow: 0 0 0px 1000px #0e2851 inset !important;
+//            //input字体颜色 颜色根据自己要求替换
+//            -webkit-text-fill-color: #ffffff !important;
+//          }
+//          .getCode {
+//            padding: 8px;
+//            color: #467cf3;
+//          }
+//        }
+//      }
+//    }
+//  }
+//
+//  .rememberpassword {
+//    .el-checkbox__label {
+//      color: #ffffff;
+//    }
+//    .el-checkbox__input.is-checked .el-checkbox__inner {
+//      background-color: #557cec;
+//      border-color: #557cec;
+//    }
+//    .el-checkbox__input.is-checked + .el-checkbox__label {
+//      color: #557cec;
+//    }
+//    .registerbtn {
+//      float: right;
+//      font-size: 14px;
+//      font-family: PingFang SC;
+//      font-weight: 400;
+//      color: #ffffff;
+//      cursor: pointer;
+//    }
+//  }
+//  .loginbtn {
+//    margin-top: 10px;
+//    .el-button {
+//      width: 100%;
+//      height: 47px !important;
+//      line-height: 47px !important;
+//      background: #467cf3;
+//      border-radius: 4px;
+//      color: white;
+//      font-size: 18px;
+//      padding: 0;
+//    }
+//  }
+//}
 </style>

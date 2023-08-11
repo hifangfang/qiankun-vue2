@@ -9,12 +9,22 @@ Vue.use(ElementUI, { size: "small" });
 import "element-ui/lib/theme-chalk/index.css";
 import validator from "validator";
 Vue.prototype.$validator = validator;
+Vue.mixin({
+  methods: {
+    jumpPage(path, moduleName) {
+      // 通知主应用发生了页面跳转
+      this.$setGlobalState({
+        currentRoute: { currentPage: path, currentModuleName: moduleName },
+      });
+    },
+  },
+});
 // 解决element-ui下拉框报错问题
-let rawGetComputedStyle = window.getComputedStyle;
-window.getComputedStyle = function (el, pseudoElt) {
-  if (el.nodeType == 11) return { overflow: "auto" };
-  return rawGetComputedStyle(el, pseudoElt);
-};
+// let rawGetComputedStyle = window.getComputedStyle;
+// window.getComputedStyle = function (el, pseudoElt) {
+//   if (el.nodeType == 11) return { overflow: "auto" };
+//   return rawGetComputedStyle(el, pseudoElt);
+// };
 
 
 /**s

@@ -68,7 +68,9 @@ router.beforeEach((to, from, next) => {
   if (to.path === "/home") {
     store.commit("permission/UPDATE_SUB_MENU", true);
   }
-  if (!router.options.isAddAsyncMenuData) {
+  debugger
+  if (!router.options.isAddAsyncMenuData&&(to.path !== "/login")) {
+    debugger
     store.dispatch("permission/generateRoutes").then((accessRoutes) => {
       // 根据用户权限生成可访问的路由表
       for (let i = 0, length = accessRoutes.length; i < length; i += 1) {

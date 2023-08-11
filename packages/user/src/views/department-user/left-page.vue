@@ -115,7 +115,6 @@ export default class DepartmentUserPageLeft extends Vue {
     debugger
     //获取当前登录用户的父机构及跟他平级或子级的部门
     this.loginUserSameOrNextLevelDept = []
-    console.log(this.$store.state,"ssssss测试测试")
     const userId = this.$store.state?.global.userInfo?.user_id || getUrlParam("userId")
     const response = await IdentityApi.getByIdUserDepartments(userId);
     this.loginUserDetail = response

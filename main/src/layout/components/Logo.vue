@@ -1,10 +1,3 @@
-<!--
- * @Author: lizhijie429
- * @Date: 2021-08-19 11:16:08
- * @LastEditors: lizhijie429
- * @LastEditTime: 2021-08-19 11:18:22
- * @Description: 
--->
 <template>
   <div class="logo">
     <span class="site-name">ADMIN LITE</span>

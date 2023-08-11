@@ -19,12 +19,12 @@ const lifeCycle = () => {
       console.log("[vue] vue app bootstraped", props);
     },
     async mount(props) {
+      console.log("[vue] props from main framework", props);
       const { setGlobalState, libraryInstall } = props;
       //注册乾坤setGlobalState 通信方法
       Vue.prototype.$setGlobalState = setGlobalState;
       // 注册主应用下发的组件 工具类
       libraryInstall(Vue, store, props);
-      console.log("[vue] props from main framework", props);
       // common.initGlobalState(store, props);
       render(props);
     },

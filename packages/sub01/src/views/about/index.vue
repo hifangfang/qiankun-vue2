@@ -1,10 +1,11 @@
 <template>
   <div class="about">
     <h1>关于子应用页面</h1>
-    <el-button type="primary" @click="update">更新姓名</el-button>
+    <el-button type="primary" @click="update">更新姓名11</el-button>
     <el-select v-model="value" placeholder="请选择">
       <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value"> </el-option>
     </el-select>
+    <img style="margin-top: 10px" src="../../assets/energy.png" alt="">
   </div>
 </template>
 
@@ -46,6 +47,7 @@ export default {
   methods: {
     ...mapActions("global", ["setGlobalState"]),
     update() {
+      //更新全局数据
       this.setGlobalState({ userInfo: { name: "sub01的张三" } });
     },
   },

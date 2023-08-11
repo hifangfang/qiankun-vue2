@@ -79,7 +79,6 @@
           },
         ]
       nodes=nodes.concat(authorityArr);
-      console.log(nodes,"唉呀妈呀")
       // 边集
       let edges=[] as any;
       userRoleDataArr.forEach(item=>{
@@ -156,12 +155,10 @@
       //   if(shadow){
       //     element=shadow.querySelectorAll('#subapp-user')[0];
       //   }
-        console.log(document)
+
       const container:any = document.getElementById('g6-container');
-      console.log(container,"hahahahhceshi1")
       const width = container.scrollWidth;
       const height = container.scrollHeight;
-      console.log(width,height)
       const graph = new G6.Graph({
         container: 'container',
         width,
@@ -199,7 +196,6 @@
           },
         },
       });
-      console.log(this.treedata,"xxxhahahce测试")
       graph.data(this.treedata);
       graph.render();
 

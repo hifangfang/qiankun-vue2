@@ -74,11 +74,11 @@ function getRoutes(store, props) {
       for (let i = 0, length = routesData.length; i < length; i += 1) {
         const element = routesData[i];
         if (
-          element.path &&
-          element.path.includes(props.name) &&
-          element.meta &&
-          element.meta.moduleName &&
-          element.meta.moduleName === props.name
+          element?.path &&
+          element?.path.includes(props.name) &&
+          element?.meta &&
+          element?.meta.moduleName &&
+          element?.meta.moduleName === props.name
         ) {
           const path = element.path.slice(props.name.length + 1);
           element.path = path;

@@ -11,6 +11,7 @@ const tabs = {
     },
     // 新增tabs
     UPDATE_TABS_LIST(state, payload) {
+      debugger
       if (state.tabsList.length < 10) {
         const hasTabsItem = state.tabsList.filter((item) => {
           return item && item.name === payload.name;

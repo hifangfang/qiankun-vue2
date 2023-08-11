@@ -1,10 +1,3 @@
-<!--
- * @Author: lizhijie429
- * @Date: 2021-08-25 20:56:20
- * @LastEditors: lizhijie429
- * @LastEditTime: 2021-11-03 21:05:04
- * @Description: 
--->
 <template>
   <div>
     <template v-for="item in subMenu">
