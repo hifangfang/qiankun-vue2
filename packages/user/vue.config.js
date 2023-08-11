@@ -1,6 +1,5 @@
 const path = require("path");
 const { name, port } = require("./package");
-console.log(`${name}-[name]`);
 debugger
 function resolve(dir) {
   return path.join(__dirname, dir);
@@ -8,7 +7,7 @@ function resolve(dir) {
 const dev = process.env.NODE_ENV === "development";
 module.exports = {
   publicPath: dev ? `//localhost:${port}` : "/",
-  outputDir: "dist",
+  outputDir: `../dist/${name}`,
   assetsDir: "static",
   filenameHashing: true,
   devServer: {
@@ -34,7 +33,7 @@ module.exports = {
     },
     output: {
       // 把子应用打包成 umd 库格式
-      library:"user",
+      library: `${name}-[name]`,
       libraryTarget: "umd",
       jsonpFunction: `webpackJsonp_${name}`
     }

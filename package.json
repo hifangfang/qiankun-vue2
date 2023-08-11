@@ -21,26 +21,29 @@
     "lint:main": "cd main && pnpm run lint ",
     "lint:sub01": "cd packages/sub01 && pnpm run lint ",
     "lint:sub02": "cd packages/sub02 && pnpm run lint ",
-    "build": "npm-run-all build:* ",
+    "build": "npm-run-all build:* && pnpm run copyDir ",
     "build:main": "cd main && pnpm run build ",
     "build:sub01": "cd packages/sub01 && pnpm run build ",
-    "build:sub02": "cd packages/sub02 && pnpm run build "
+    "build:sub02": "cd packages/sub02 && pnpm run build ",
+    "build:user": "cd packages/user && pnpm run build ",
+    "copyDir": "node ./script/build.js"
   },
   "repository": {
     "type": "git",
-    "url": "https://gitee.com/lizhijie429/qiankun-vue2.0.git"
+    "url": "https://github.com/hifangfang/qiankun-vue2.git"
   },
   "keywords": [
     "qiankun",
     "vue2.0",
     "前端微应用"
   ],
-  "author": "lizhijie429",
+  "author": "hifangfang",
   "license": "MIT",
   "devDependencies": {
     "less": "^4.1.2",
     "sass-loader": "^8.0.2",
-    "npm-run-all": "^4.1.5"
+    "npm-run-all": "^4.1.5",
+    "fs-extra": "^10.1.0"
   },
   "dependencies": {
     "express": "^4.18.2",
