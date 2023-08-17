@@ -177,7 +177,6 @@ import { BaseApi } from "@/api/base/module/base-api.ts";
 import { WaterMarkService } from "@/utils/js/water-mark.service.js";
 import bus from "@/utils/js/bus.js";
 import ColumnCommon from "@/utils/js/common.js";
-// import { WebSoketAPI } from "@/api/websoket/websoket-api.ts";
 import { getUrlParam } from "@/utils/js/urlpath-utils.js";
 import { LocalStorageUtil } from "@/utils/js/localforage-utils.js";
 export default {
@@ -434,25 +433,8 @@ export default {
       });
     },
     async getPlatInfo() {
-      // add by lyh 2019-12-18 获取标题部门等相关信息
-      const platinfo = await BaseApi.getPlatInfo();
-      localStorage.setItem("deptName", platinfo.deptName);
-      localStorage.setItem("staffName", platinfo.staffName);
-      localStorage.setItem("userId", platinfo.userId);
-      localStorage.setItem("deptId", platinfo.deptId);
-      localStorage.setItem("xzqdm", platinfo.xzqdm);
-      localStorage.setItem("roles", platinfo.roles);
-      localStorage.setItem("modulus", platinfo.modulus);
-      localStorage.setItem("exponent", platinfo.exponent);
-      localStorage.setItem("systemUser", platinfo.systemUser);
-      localStorage.setItem("lockScreen", platinfo.lockScreen);
-      localStorage.setItem("waterMark", platinfo.waterMark);
-      localStorage.setItem("ip", platinfo.ip);
-      localStorage.setItem("roleCodes", platinfo.roleCodes);
-      localStorage.setItem("pullData", platinfo.pullData); //用户管理-数据同步
-      this.$emit("changeStarfName", platinfo.staffName);
-      //添加流程回放地址
-      localStorage.setItem("platformExplorerDiagramUrl", platinfo.platformExplorerDiagramUrl);
+      const platInfo = await BaseApi.getPlatInfo();
+      localStorage.setItem("platInfo",JSON.stringify(platInfo))
     },
     openTimer() {
       this.codeTime = 60;

@@ -5,9 +5,9 @@ module.exports = {
     'node': true
   },
   // 'extends': [
-    // 'plugin:vue@2.6.11/essential',
+    // 'plugin:vue@2.7.14/essential',
     // 'eslint:recommended',
-    // '@vue@2.6.11/typescript'
+    // '@vue@2.7.14/typescript'
   // ],
   'rules': {
     // 'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',

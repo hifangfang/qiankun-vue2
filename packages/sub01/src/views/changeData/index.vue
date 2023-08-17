@@ -2,6 +2,7 @@
   <div class="about">
     <h1>修改全局数据页面</h1>
     <el-button type="primary" @click="update">更新姓名</el-button>
+    <img style="margin-top: 10px" src="../../assets/energy.png" alt="" />
   </div>
 </template>
 
@@ -16,7 +17,8 @@ export default {
   methods: {
     ...mapActions("global", ["setGlobalState"]),
     update() {
-      this.setGlobalState({ userInfo: { name: "sub01的张三" } });
+      console.log(this.$store.state)
+      // this.setGlobalState({ userInfo: { name: "sub01的张三" } });
     },
   },
 };

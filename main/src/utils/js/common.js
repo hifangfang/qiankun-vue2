@@ -1,14 +1,5 @@
-/*author：chentb
-description：通用js
-date:2018-11-29*/
-import Vue from 'vue';
-/*underscore提供了100多个函数,包括常用的: map, filter, invoke —
- 当然还有更多专业的辅助函数,如:函数绑定, JavaScript模板功能,创建快速索引, 强类型相等测试
-弥补了部分jquery没有的功能*/
-import _ from './underscore.js' ;
-/* eslint-disable */
-const vue = new Vue();
 // 前端生成GUID  chenlj3
+/* eslint-disable */
 function newGuid() {
   var s = [],
    hexDigits = '0123456789abcdef';
@@ -34,43 +25,6 @@ function dateTimeFormatter(val, datefmt) {
   var date = new Date(val);
   return date.pattern(datefmt || 'yyyy-MM-dd HH:mm:ss');
 }
-function getCycleDaysName(value) {
-  if (!value) {
-    return '';
-  }
-  let arr = value.split('/'),
-   ret1 = _.find(globalJS.cycleDays, item => {
-    return item.value == arr[0];
-  });
-  if (ret1 && ret1.children && ret1.children.length > 0) {
-    let ret2 = _.find(ret1.children, item => {
-      return item.value == arr[1];
-    });
-    if (ret2 && ret2.children && ret2.children.length > 0) {
-      let ret3 = _.find(ret2.children, item => {
-        return item.value == arr[2];
-      });
-      if (ret3) {
-        return ret1.label + '/' + ret2.label + '/' + ret3.label;
-      }
-        return '';
-    }
-      return ret1.label + '/' + ret2.label;
-  } else if (ret1) {
-    return ret1.label;
-  }
-  return '';
-}
-//消息提醒
-function messageAlert(title,type, message) {
-  vue.$notify({
-    'title':title,
-    'message': message,
-    'type': type
-  });
-}
-
-
 /**
  * 对Date的扩展，将 Date 转化为指定格式的String
  * 月(M)、日(d)、12小时(h)、24小时(H)、分(m)、秒(s)、周(E)、季度(q) 可以用 1-2 个占位符
@@ -125,13 +79,6 @@ Date.prototype.pattern = function (fmt) {
   }
   return fmt;
 };
-
-function tableHeadStyle() {
-  return {background:'#FAFAFA',height:'37px'};
-}
-function tableRowStyle() {
-  return {height:'37px'};
-}
 function getCode() {
   return "PlatForm" + Math.random().toString().substr(3, 2) + S4() + S4();
 }
@@ -156,10 +103,6 @@ export  default {
   newGuid,// 生成uuid
   nowDate,// 获取当前时间 默认格式yyyy-MM-dd hh:mm:ss
   dateTimeFormatter,// 时间转换成指定格式 默认yyyy-MM-dd hh:mm:ss
-  getCycleDaysName,
-  messageAlert,// 消息提醒
-  tableHeadStyle,
-  tableRowStyle,
   getCode,
   isJSON
 };

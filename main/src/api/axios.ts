@@ -1,7 +1,7 @@
 import axios from "axios";
 //认证集成start
 // @ts-ignore
-import { ApiRequestError, ApiResultCode } from "./api_response.ts";
+import { ApiRequestError } from "./api_response.ts";
 import { Message } from "element-ui";
 import {isAppViewOrLogin } from "@/utils/js/urlpath-utils.js";
 import { LocalStorageUtil } from "@/utils/js/localforage-utils.js";
@@ -45,7 +45,7 @@ axios.interceptors.response.use(
             type: "error",
             duration: 3 * 1000,
           });
-          throw new ApiRequestError(ApiResultCode.error, "获取文件失败");
+          throw new ApiRequestError("获取文件失败");
         }
         loadingInstance?.close();
         return res;

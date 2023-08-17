@@ -17,7 +17,7 @@
 
 <script>
 import { mapState } from "vuex";
-import { getLastLevelNode, homeMenuData } from "../utils";
+// import { getLastLevelNode, homeMenuData } from "../utils";
 import { SideMenu, NavMenu, Tabs } from "./components/index";
 export default {
   name: "Layout",
@@ -34,36 +34,36 @@ export default {
   },
   mounted() {
 
-    // 获取页面持久化数据
-    const currentPage = sessionStorage.getItem("currentPage");
-    const currentApp = sessionStorage.getItem("currentApp");
-    // 处理关闭前页面是首页的情况
-    if (currentApp && currentApp === "main" && currentPage && currentPage === "/home") {
-      this.$store.commit("permission/UPDATE_SUB_MENU", true);
-      this.$store.commit("permission/UPDATE_CURRENT_MODULE_NAME", "main");
-      this.$store.commit("tabs/UPDATE_TABS_LIST", homeMenuData);
-
-      return false;
-    }
-    // 处理关闭前非首页页面持久化逻辑
-    if (currentPage && currentApp && currentApp !== "main") {
-      // 获取左侧菜单数据
-      const menu = this.menuList.filter((element) => {
-        return element.moduleName === currentApp;
-      });
-      this.$store.commit("permission/UPDATE_SUB_MENU", menu[0].menuList);
-      // 跳转页面
-      const pages = getLastLevelNode(menu[0].menuList);
-      if (Array.isArray(pages)) {
-        const page = pages.filter((element) => {
-          return element.path === currentPage;
-        });
-        this.$store.commit("tabs/UPDATE_TABS_LIST", page[0]);
-      }
-    } else {
-      this.$store.commit("permission/UPDATE_SUB_MENU", true);
-      this.$store.commit("tabs/UPDATE_TABS_LIST", homeMenuData);
-    }
+    // // 获取页面持久化数据
+    // const currentPage = sessionStorage.getItem("currentPage");
+    // const currentApp = sessionStorage.getItem("currentApp");
+    // // 处理关闭前页面是首页的情况
+    // if (currentApp && currentApp === "main" && currentPage && currentPage === "/home") {
+    //   this.$store.commit("permission/UPDATE_SUB_MENU", true);
+    //   this.$store.commit("permission/UPDATE_CURRENT_MODULE_NAME", "main");
+    //   this.$store.commit("tabs/UPDATE_TABS_LIST", homeMenuData);
+    //
+    //   return false;
+    // }
+    // // 处理关闭前非首页页面持久化逻辑
+    // if (currentPage && currentApp && currentApp !== "main") {
+    //   // 获取左侧菜单数据
+    //   const menu = this.menuList.filter((element) => {
+    //     return element.moduleName === currentApp;
+    //   });
+    //   this.$store.commit("permission/UPDATE_SUB_MENU", menu[0].menuList);
+    //   // 跳转页面
+    //   const pages = getLastLevelNode(menu[0].menuList);
+    //   if (Array.isArray(pages)) {
+    //     const page = pages.filter((element) => {
+    //       return element.path === currentPage;
+    //     });
+    //     this.$store.commit("tabs/UPDATE_TABS_LIST", page[0]);
+    //   }
+    // } else {
+    //   this.$store.commit("permission/UPDATE_SUB_MENU", true);
+    //   this.$store.commit("tabs/UPDATE_TABS_LIST", homeMenuData);
+    // }
   },
 };
 </script>

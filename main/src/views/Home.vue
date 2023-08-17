@@ -11,14 +11,22 @@
 </template>
 
 <script>
-
-
 export default {
   name: "Home",
   data() {
     return {
       num: 123,
     };
+  },
+  mounted() {
+    // debugger
+    // this.$store.commit("user/UPDATE_USER_INFO",JSON.parse(localStorage.getItem("userInfo")))
+    // //初始化全局下发的数据
+    // this.$actions.setGlobalState({
+    //   userInfo: this.$store.state.user.userInfo,
+    //   globalConfig: this.$store.state.user.globalConfig,
+    //   routers: this.$store.state.permission.routers,
+    // });
   },
   methods: {
     numAdd() {

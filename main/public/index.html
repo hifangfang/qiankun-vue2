@@ -9,6 +9,9 @@
   <title>
     qiankun-vue2.0
   </title>
+    <% for (var i in htmlWebpackPlugin.options.cdn && htmlWebpackPlugin.options.cdn.css) { %>
+    <link href="<%= htmlWebpackPlugin.options.cdn.css[i] %>" ignore rel="stylesheet">
+    <% } %>
 </head>
 
 <body>
@@ -17,7 +20,14 @@
         Please enable it to continue.</strong>
   </noscript>
   <div id="main"></div>
-  <!-- built files will be auto injected -->
+  <!-- 循环引入js资源 -->
+  <% for (var i in htmlWebpackPlugin.options.cdn&&htmlWebpackPlugin.options.cdn.js) { %>
+  <script src="<%= htmlWebpackPlugin.options.cdn.js[i] %>"></script>
+  <% } %>
+  <script>
+      window.Vue2 = window.Vue;
+      window.Vue = undefined;
+  </script>
 </body>
 
 </html>

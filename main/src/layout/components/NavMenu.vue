@@ -58,6 +58,9 @@ export default {
       isScresnFull: false,
     };
   },
+  mounted() {
+    console.log(this.$store.state,"hahahahxixixi")
+  },
   computed: {
     ...mapState({
       currentModuleName: (state) => state.permission.currentModuleName,

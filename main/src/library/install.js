@@ -2,7 +2,7 @@ import FtUi from "./ui/index"; // 导入ui
 import * as FUNCONVUE from "./js/func-mounted-on-vue"; // 导入需要挂载在vue上的方法
 import * as STORAGE from "./js/storage.js";
 import * as VALIDATOR from "./js/validator.js";
-// import VueClipboard from 'vue@2.6.11-clipboard2';
+// import VueClipboard from 'vue@2.7.14-clipboard2';
 import directives from "./js/directives"; // 添加全局指令
 // import "./js/descriptors"; // 添加全局装饰器
 import common from "./js/common"; // 添加全局指令

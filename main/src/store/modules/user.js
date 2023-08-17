@@ -1,7 +1,7 @@
 const user = {
   namespaced: true,
   state: () => ({
-    userInfo: { name: "qiankun" },
+    userInfo: {},
     globalConfig: { formSize: "small" },
   }),
   mutations: {
@@ -12,6 +12,7 @@ const user = {
       state[payload.key] = payload.value;
     },
     UPDATE_USER_INFO(state, payload) {
+      debugger
       state.userInfo = payload;
     },
     UPDATE_GLOBAL_CONFIG(state, payload) {

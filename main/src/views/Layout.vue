@@ -47,3 +47,8 @@ export default {
   },
 };
 </script>
+<style lang="scss">
+.app-view-box{
+  height: 100%;
+}
+</style>

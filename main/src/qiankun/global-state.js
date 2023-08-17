@@ -25,12 +25,14 @@ export const qiankunActions = initGlobalState(initialState);
 
 // 检测全局下发数据的改变
 qiankunActions.onGlobalStateChange((state) => {
+  debugger
   // 修改全局下发的数据
   for (const key in state) {
     if (Object.prototype.hasOwnProperty.call(state, key)) {
       const item = state[key];
       initialState[key] = item;
       if (key === "userInfo") {
+        debugger
         store.commit("user/UPDATE_USER_INFO", item);
         continue;
       }

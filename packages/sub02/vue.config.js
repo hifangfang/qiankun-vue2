@@ -2,12 +2,11 @@ const path = require("path");
 const packageName = require("./package.json").name;
 const node_env = process.env.NODE_ENV === "production";
 // const baseUrl = process.env.VUE_APP_BASE_URL;
-const baseUrl = "./";
+const baseUrl = "/";
 const resolve = (dir) => path.join(__dirname, dir);
 module.exports = {
   outputDir: `../dist/${packageName}`,
-  publicPath: node_env ? baseUrl : "./",
-  assetsDir: "static",
+  publicPath: node_env ? baseUrl : "/",
   parallel: false,
   configureWebpack: {
     resolve: {
